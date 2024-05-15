@@ -1,0 +1,38 @@
+{% include 'navbar/index.html' %}
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'devices/styles.css' %}">
+{% block content %}
+  <h2>Devices</h2>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Subnets</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for device in devices %}
+        <tr>
+          <td>{{ device.name }}</td>
+          <td>{{ device.device_type }}</td>
+          <td>
+            <ul>
+              {% for subnet in device.subnets.all %}
+                <li>{{ subnet.IpAdresswithCDIR }}</li>
+              {% empty %}
+                <li>No subnets</li>
+              {% endfor %}
+            </ul>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3">No devices</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+

@@ -1,0 +1,34 @@
+{% load static %}
+{% include 'navbar/index.html' %}
+<link href="{% static 'details/styles.css' %}" rel="stylesheet">
+
+<h1>Subnet Details</h1>
+<table class="styled-table">
+  <thead>
+    <tr>
+      <th>Detail</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Network Address</td><td>{{ network_address }}</td></tr>
+    <tr><td>Broadcast Address</td><td>{{ broadcast_address }}</td></tr>
+    <tr><td>CIDR Notation</td><td>{{ cidr_notation }}</td></tr>
+    <tr><td>Subnet Mask</td><td>{{ subnet_mask }}</td></tr>
+    <tr><td>Wildcard Mask</td><td>{{ wildcard_mask }}</td></tr>
+    <tr><td>First IP</td><td>{{ first_ip }}</td></tr>
+    <tr><td>Last IP</td><td>{{ last_ip }}</td></tr>
+    <tr>
+      <td>Devices</td>
+      <td>
+        <ul>
+          {% for device in devices %}
+            <li>{{ device.name }}</li>
+          {% empty %}
+            <li>No devices</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>

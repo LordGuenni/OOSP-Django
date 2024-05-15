@@ -1,0 +1,8 @@
+{% load static %}
+{% include 'navbar/index.html' %}
+<link href="{% static 'createSubnets/styles.css' %}" rel="stylesheet">
+<form method="GET" action="/subnets/details">
+    {% csrf_token %}
+    {{ form.subnet_select }}
+    <input type="submit" value="Auswählen">
+</form>
